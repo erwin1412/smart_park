@@ -5,7 +5,6 @@ import {
   Timestamp,
   OneToOne,
 } from "typeorm";
-import { Ticket } from "./ticket";
 
 @Entity({ name: "users" })
 export class User {

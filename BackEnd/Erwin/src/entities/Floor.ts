@@ -5,7 +5,6 @@ import {
   OneToOne,
   JoinColumn,
 } from "typeorm";
-import { Ticket } from "./ticket";
 import { Mall } from "./Mall";
 
 @Entity({ name: "floors" })

@@ -17,11 +17,11 @@ export class Ticket {
   @Column()
   noKendaraan: string;
 
-  @OneToOne(() => User)
+  @OneToOne(() => User, { onDelete: "CASCADE" })
   @JoinColumn()
   user: User;
 
-  @OneToOne(() => Floor)
+  @OneToOne(() => Floor, { onDelete: "CASCADE" })
   @JoinColumn()
   floor: Floor;
 
