@@ -2,33 +2,26 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  Timestamp,
   OneToOne,
+  JoinColumn,
 } from "typeorm";
 import { Ticket } from "./ticket";
+import { Mall } from "./Mall";
 
-@Entity({ name: "users" })
-export class User {
+@Entity({ name: "floors" })
+export class Floor {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
-  fullname: string;
+  parkingCode: string;
 
-  @Column({ unique: true })
-  username: string;
+  @Column({ default: false })
+  isBooked: Boolean;
 
-  @Column({ unique: true })
-  email: string;
-
-  @Column({ select: false })
-  password: string;
-
-  @Column({ unique: true })
-  phone: string;
-
-  @Column()
-  role: string;
+  @OneToOne(() => Mall)
+  @JoinColumn()
+  mall: Mall;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   created_at: Date;
