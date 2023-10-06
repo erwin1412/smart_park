@@ -24,7 +24,7 @@ try {
         email: data.email,
         password: hashedPassword,
       });
-      this.authRepository.save(user);
+      await this.authRepository.save(user);
       const responseMessage = `Data User Berhasil di buat : \n${JSON.stringify(user, null, 2)}`;
 
       console.log("Request body:", user);

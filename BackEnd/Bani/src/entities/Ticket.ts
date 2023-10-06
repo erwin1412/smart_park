@@ -2,7 +2,6 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
-  Timestamp,
   OneToOne,
   JoinColumn, // Import JoinColumn
 } from "typeorm";

@@ -1,5 +1,5 @@
 import { AppDataSource } from "./data-source"
-import * as express from 'express';
+import * as express from 'express'
 import router from "./routes";
 
 AppDataSource.initialize().then(async () => {
@@ -13,4 +13,5 @@ AppDataSource.initialize().then(async () => {
         console.log(`server running on http://localhost:${port}`);
     })
 
-}).catch(error => console.log(error))
+})
+.catch(error => console.log(error))
