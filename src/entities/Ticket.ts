@@ -4,31 +4,26 @@ import {
   Column,
   Timestamp,
   OneToOne,
+  JoinColumn, // Import JoinColumn
 } from "typeorm";
-import { Ticket } from "./ticket";
+import { User } from "./User";
+import { Floor } from "./Floor";
 
-@Entity({ name: "users" })
-export class User {
+@Entity({ name: "tickets" })
+export class Ticket {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column()
-  fullname: string;
+  noKendaraan: string;
 
-  @Column({ unique: true })
-  username: string;
+  @OneToOne(() => User)
+  @JoinColumn()
+  user: User;
 
-  @Column({ unique: true })
-  email: string;
-
-  @Column({ select: false })
-  password: string;
-
-  @Column({ unique: true })
-  phone: string;
-
-  @Column()
-  role: string;
+  @OneToOne(() => Floor)
+  @JoinColumn()
+  floor: Floor;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   created_at: Date;
