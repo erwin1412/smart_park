@@ -9,9 +9,9 @@ export default function useFloor() {
   const toast = useToast()
   const navigate = useNavigate()
   const [form, setForm] = useState<IFloorPost>({
-    parkingCode: "",
-    mall: "",
+    // parkingCode: "",
     isBooked: true,
+    role: "1",
   })
 
   async function getData() {
@@ -74,5 +74,12 @@ export default function useFloor() {
     getData()
   }, [])
 
-  return { getData, changeHandler, handleFloor, updateFloor, deleteFloor, floorList }
+  return {
+    getData,
+    changeHandler,
+    handleFloor,
+    updateFloor,
+    deleteFloor,
+    floorList,
+  }
 }

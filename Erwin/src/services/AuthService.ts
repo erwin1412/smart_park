@@ -119,13 +119,13 @@ class AuthService {
           id: loginSession.user.id,
         },
         select: [
+
           "id",
           "fullname",
           "username",
           "email",
-          "password",
-          "role",
           "phone",
+          "role",
         ],
       });
 
