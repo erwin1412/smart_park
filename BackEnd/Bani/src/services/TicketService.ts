@@ -11,9 +11,10 @@ class TicketService {
     private readonly floorRepository: Repository<Floor> = AppDataSource.getRepository(Floor);
 
     async find(req: Request, res: Response) {
-      const id = req.params.id
+      const idUser = req.params.id
       const ticket = await this.checkinRepository.find({
-        where : {user : {id : id}}
+        where : {user : {id : idUser}},
+        order : {created_at : 'DESC'}
       })
 
       return res.status(200).json(ticket)
@@ -21,7 +22,7 @@ class TicketService {
     
     async create(req: Request, res: Response) {      
     try {
-      const id = req.params.id
+      const idFloor = req.params.id
       const data = {
         noKendaraan: req.body.noKendaraan,
         userId: req.body.userId,
@@ -29,14 +30,14 @@ class TicketService {
 
       const ticket = this.checkinRepository.create({
         noKendaraan: data.noKendaraan,
-        floor: {id : id},
+        floor: {id : idFloor},
         user: {id : data.userId},
       });
       
       await this.checkinRepository.save(ticket);
 
       const floor = await this.floorRepository.findOne({
-        where : {id : id}
+        where : {id : idFloor}
       });
 
       if (floor) {
