@@ -10,8 +10,7 @@ export default function useGetMallList() {
 
   const [form, setForm] = useState<IMallPost>({
     name: "",
-    district: "",
-    address: "",
+    location: "",
     image: "",
   })
   async function getData() {
@@ -49,16 +48,14 @@ export default function useGetMallList() {
 
     const formData = new FormData()
     formData.append("name", form.name)
-    formData.append("district", form.district)
-    formData.append("address", form.address)
+    formData.append("district", form.location)
     formData.append("image", form.image)
 
     try {
-      const response = await API.post("/mall", formData)
+      await API.post("/mall", formData)
       setForm({
         name: "",
-        district: "",
-        address: "",
+        location: "",
         image: "",
       })
       setPreviewImage("")
@@ -77,7 +74,7 @@ export default function useGetMallList() {
 
 
 
-  async function handleDelete(id: any) {
+  async function handleDelete(id: string) {
     try {
       await API.delete(`/mall/${id}`)
       getData()
@@ -99,19 +96,17 @@ export default function useGetMallList() {
     }
   }
 
-  async function updateMall(id: any) {
+  async function updateMall(id: string) {
     const formData = new FormData()
     formData.append("name", form.name)
-    formData.append("district", form.district)
-    formData.append("address", form.address)
+    formData.append("district", form.location)
     formData.append("image", form.image)
 
     try {
-      const response = await API.patch(`/mall/${id}`, formData) // Assuming you have a PUT endpoint for updating a mall
+      await API.patch(`/mall/${id}`, formData)
       setForm({
         name: "",
-        district: "",
-        address: "",
+        location: "",
         image: "",
       })
       setPreviewImage("")
@@ -140,5 +135,6 @@ export default function useGetMallList() {
     handleDelete,
     updateMall,
     mallList,
+    previewImage
   }
 }

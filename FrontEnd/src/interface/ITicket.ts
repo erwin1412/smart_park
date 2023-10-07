@@ -1,9 +1,14 @@
+import { IFloor } from "./IFloor"
+
 export interface ITicket {
     id: string
     noKendaraan: string
-    floor: string
+    floorId: IFloor
 }
 export interface ITicketPost {
     noKendaraan: string
-    floorId: string
+    floorId: IFloor
+  
+  
+    
 }

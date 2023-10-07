@@ -1,9 +1,10 @@
 import { Box, Button, Flex, FormControl, FormLabel, Grid, Heading, Image, Input, Stack, Text } from "@chakra-ui/react";
 import { Layout } from "../layout/Layout";
-// import dummyFloorPlan from "../utils/dummyFloorPlan.json"
+import dummyFloorPlan from "../utils/dummyFloorPlan.json"
 import floorPlan from "../assets/mkg-floor-plan.svg"
 import { useState } from "react";
-import useFloor from "../hooks/useFloor";
+// import { useDummyForm } from "../hooks/useDummyForm";
+// import { useNavigate } from "react-router-dom";
 
 export default function ReservationPage() {
   // const randomizePercentage = 0.4
@@ -20,7 +21,29 @@ export default function ReservationPage() {
     setSelectedSpot(spotCode)
   }
 
-  const {getData, changeHandler, handleFloor, updateFloor, deleteFloor, floorList} = useFloor()
+
+  const handleDummySubmit = () => {
+    const plateNumberInput = document.getElementById('plateNumberInput') as HTMLInputElement | null
+    const plateNumber = plateNumberInput ? plateNumberInput.value : ''
+
+    const formData = {
+      selectedSpot: selectedSpot,
+      plateNumber: plateNumber,
+      isBooked: false,
+      mallName: "Mal Kelapa Gading",
+      mallLocation: "Jakarta Utara"
+    }
+
+    const parkingData = JSON.parse(localStorage.getItem('Parking Spot Data') || '[]');
+
+    formData.isBooked = true
+
+    parkingData.push(formData)
+
+    localStorage.setItem('Parking Spot Data', JSON.stringify(parkingData))
+
+    window.location.href = 'history'
+  }
 
   return (
     <Layout>
@@ -30,7 +53,7 @@ export default function ReservationPage() {
       >
         <Flex justify={'space-between'}>
           <Heading size={'md'}>MKG's Parking Lot</Heading>
-          <Text>{floorList.length} Parking Spots | {floorList.filter(parkingSpot => !parkingSpot.isBooked).length} Available</Text>
+          <Text>{dummyFloorPlan.length} Parking Spots | {dummyFloorPlan.filter(parkingSpot => !parkingSpot.isBooked).length} Available</Text>
         </Flex>
 
         <Flex mx={'auto'} boxSize={'2xs'}>
@@ -72,7 +95,7 @@ export default function ReservationPage() {
           </Flex>
 
           <Grid templateColumns={'repeat(10, 8fr)'} gap={5}>
-            {floorList.map((parkingSpot) => (
+            {dummyFloorPlan.map((parkingSpot) => (
               <Button
                 key={parkingSpot.id}
                 isDisabled={parkingSpot.isBooked === true}
@@ -97,12 +120,22 @@ export default function ReservationPage() {
         <Flex gap={5} align={'end'}>
           <FormControl isRequired isReadOnly>
             <FormLabel>Chosen Parking Spot</FormLabel>
-            <Input variant={'flushed'} borderColor={'#ED7D3A'} readOnly value={selectedSpot} />
+            <Input
+              variant={'flushed'}
+              borderColor={'#ED7D3A'}
+              readOnly
+              value={selectedSpot}
+            />
           </FormControl>
 
           <FormControl isRequired>
             <FormLabel>Current Vehicle's Plate Number</FormLabel>
-            <Input variant={'flushed'} borderColor={'#ED7D3A'} placeholder="B 2134 ADC" />
+            <Input
+              variant={'flushed'}
+              borderColor={'#ED7D3A'}
+              placeholder="B 2134 ADC"
+              id="plateNumberInput"
+            />
           </FormControl>
 
           <Button
@@ -110,7 +143,7 @@ export default function ReservationPage() {
             bgColor={'#ED7D3A'}
             textColor={'white'}
             _hover={{ bgColor: 'gray.200', textColor: 'black' }}
-            onClick={handleFloor}
+            onClick={handleDummySubmit}
           >
             Save My Spot!
           </Button>

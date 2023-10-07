@@ -25,9 +25,6 @@ export function useRegister() {
     })
   }
 
-  
-
-
   const handleRegister = async (event: FormEvent) => {
     event.preventDefault()
     try {

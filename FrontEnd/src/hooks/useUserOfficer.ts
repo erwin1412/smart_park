@@ -42,7 +42,7 @@ import { IOfficer } from "../interface/IUser.js"
       const handleUserSubmit = async (event: FormEvent) => {
         event.preventDefault()
         try {
-          const response = await API.post("/officer", form)
+          await API.post("/officer", form)
           toast({
             title: "User Officer Added",
             status: "success",
@@ -59,7 +59,7 @@ import { IOfficer } from "../interface/IUser.js"
   
     async function deleteBtn(idOfficer: string) {
       try {
-        const response = await API.delete(`/officer/${idOfficer}`)
+        await API.delete(`/officer/${idOfficer}`)
   
         getUserOfficer()
         toast({
@@ -76,7 +76,7 @@ import { IOfficer } from "../interface/IUser.js"
 
     const handleUpdate = async (idOfficer: string) => {
       try {
-        const response = await API.put(`/officer/${idOfficer}`, form)
+        await API.put(`/officer/${idOfficer}`, form)
         toast({
           title: "User Officer Updated",
           status: "success",
@@ -96,7 +96,7 @@ import { IOfficer } from "../interface/IUser.js"
       getUserOfficer()
     }, [])
 
-    return {getUserOfficer,  changeHandler,  handleUserSubmit, handleUpdate, deleteBtn}
+    return {getUserOfficer,  changeHandler,  handleUserSubmit, handleUpdate, deleteBtn, users}
   }
   
 

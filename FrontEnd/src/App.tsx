@@ -1,83 +1,78 @@
-import { Routes, Route } from "react-router-dom"
-import { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Navigate, Outlet, useNavigate } from "react-router-dom"
-import { API, setAuthToken } from "./lib/api"
-import { RootState } from "./store/slice/types/rootState"
-import { AUTH_CHECK } from "./store/rootReducer"
-import LoginPage from "./pages/login"
-import RegisterPage from "./pages/register"
-import Home from "./pages/home"
-import HistoryPage from "./pages/history"
-import ReservationPage from "./pages/reservation"
-import DispatcherHistoryPage from "./pages/dispatcherHistory"
-import ReportPage from "./pages/fileAReport"
+import { Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Navigate, useNavigate } from "react-router-dom";
+import { API, setAuthToken } from "./lib/api";
+import { RootState } from "./store/types/rootState";
+import { AUTH_CHECK } from "./store/rootReducer";
+import LoginPage from "./pages/login";
+import RegisterPage from "./pages/register";
+import Home from "./pages/home";
+import HistoryPage from "./pages/history";
+import ReservationPage from "./pages/reservation";
+import DispatcherHistoryPage from "./pages/dispatcherHistory";
+import ReportPage from "./pages/fileAReport";
 
 function App() {
-  const [isloading, setIsLoading] = useState<boolean>(true)
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const auth = useSelector((state: RootState) => state.auth)
+  const dispatch = useDispatch();
 
-  const authCheck = async () => {
+  const [, setIsLoading] = useState<boolean>(true);
+  const navigate = useNavigate();
+  const auth = useSelector((state: RootState) => state.auth);
+
+  console.log(auth);
+
+  async function authCheck() {
     try {
-      setAuthToken(localStorage.token)
-      const response = await API.get("/auth/check")
-      console.log("ini auth token", response)
-      dispatch(AUTH_CHECK(response.data.user))
-      setIsLoading(false)
+      setAuthToken(localStorage.token);
+      const response = await API.get("/auth/check");
+      dispatch(AUTH_CHECK(response.data));
+      setIsLoading(false);
     } catch (err) {
-      console.log(err, "auth error")
-      setIsLoading(false)
-      navigate("/auth/login")
+      setIsLoading(false);
+      navigate("/auth/login");
     }
   }
 
   useEffect(() => {
     if (localStorage.token) {
-      authCheck()
+      authCheck();
     } else {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }, [])
+  }, []);
 
-  const IsLogin = () => {
-    if (!auth.data.username) {
-      return <Navigate to={"/auth/login"} />
-    } else {
-      return <Outlet />
-    }
-  }
-
-  const IsNotLogin = () => {
-    if (auth.data.username) {
-      return <Navigate to={"/"} />
-    } else {
-      return <Outlet />
-    }
-  }
+  const token = localStorage.getItem("token");
 
   return (
     <>
-      {isloading && (
-        <Routes>
-          <Route element={<IsLogin />}>
+      <React.Fragment>
+        {token ? (
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/history" element={<HistoryPage />} />
             <Route path="/reservation" element={<ReservationPage />} />
-          </Route>
+            <Route path='/dispatcher_history' element={<DispatcherHistoryPage />} />
+            <Route path='/file_a_report' element={<ReportPage />} />
+          </Routes>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Navigate to="/auth/login" />} />
+            <Route path="/history" element={<Navigate to="/auth/login" />} />
+            <Route
+              path="/reservation"
+              element={<Navigate to="/auth/login" />}
+            />
+            <Route path='/dispatcher_history' element={<Navigate to="/auth/login" />} />
+            <Route path='/file_a_report' element={<Navigate to="/auth/login" />} />
 
-          <Route element={<IsNotLogin />}>
             <Route path="/auth/login" element={<LoginPage />} />
             <Route path="/auth/register" element={<RegisterPage />} />
-          </Route>
-
-          <Route path='/dispatcher_history' element={<DispatcherHistoryPage />} />
-          <Route path='/file_a_report' element={<ReportPage />} />
-        </Routes>
-      )}
+          </Routes>
+        )}
+      </React.Fragment>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

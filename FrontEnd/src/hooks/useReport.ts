@@ -53,5 +53,5 @@ export default function useReport() {
     getReportYear
   }, [])
 
-  return { getReportOfficer, getReportDay, getReportMonth, getReportYear }
+  return { getReportOfficer, getReportDay, getReportMonth, getReportYear, officeReport, setYear, setCreatedAt, setMonth }
 }

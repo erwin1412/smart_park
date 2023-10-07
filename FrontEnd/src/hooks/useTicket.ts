@@ -1,17 +1,25 @@
-import { useToast } from "@chakra-ui/react"
-import { IFloor, IFloorPost } from "../interface/IFloor"
+// import { IFloor, IFloorPost } from "../interface/IFloor"
 import { API } from "../lib/api"
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ITicket, ITicketPost } from "../interface/ITicket"
 
 export default function useTicket() {
   const [ticketList, setTicketList] = useState<ITicket[]>([])
-  const toast = useToast()
   const navigate = useNavigate()
+  const { ticketId } = useParams()
+
+  const [selectedSpot, setSelectedSpot] = useState<
+    string
+  >("")
+
   const [form, setForm] = useState<ITicketPost>({
     noKendaraan: "",
-    floorId: ""
+    floorId: {
+      parkingCode: selectedSpot,
+      isBooked: true,
+
+    }
   })
 
   async function getData() {
@@ -33,10 +41,10 @@ export default function useTicket() {
     })
   }
 
-  const handleCheckin = async (event: FormEvent) => {
+  const handleCheckin = async (event: FormEvent<Element>) => {
     event.preventDefault()
     try {
-      const response = await API.post("/checkin/create", form)
+      const response = await API.post(`/ticket/${ticketId}`, form)
       console.log(response.data.data)
       navigate("/")
     } catch (err) {
@@ -48,5 +56,5 @@ export default function useTicket() {
     getData()
   }, [])
 
-  return { getData, changeHandler, handleCheckin }
+  return { getData, changeHandler, handleCheckin, ticketList, setSelectedSpot }
 }

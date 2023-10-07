@@ -1,12 +1,11 @@
 import { authSlice } from "./slice/authSlice";
-import { combineReducers } from "@reduxjs/toolkit"
+import { combineReducers } from "@reduxjs/toolkit";
 
-export const {AUTH_CHECK, LOGIN, LOGOUT} = authSlice.actions
-export const authReducer = authSlice.reducer
-
+export const { AUTH_CHECK, LOGIN, LOGOUT } = authSlice.actions;
+export const authReducer = authSlice.reducer;
 
 const rootReducer = combineReducers({
-    auth: authReducer
-})
+  auth: authReducer,
+});
 
-export default rootReducer
+export default rootReducer;
