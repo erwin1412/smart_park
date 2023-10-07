@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne } from "typeorm";
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToOne,
+  OneToMany,
+} from "typeorm";
 import { Floor } from "./Floor";
 
 @Entity({ name: "malls" })
@@ -20,4 +26,7 @@ export class Mall {
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   updated_at: Date;
+
+  @OneToMany(() => Floor, (floors) => floors.mall)
+  floors: Floor[];
 }

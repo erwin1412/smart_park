@@ -3,23 +3,24 @@ import { User } from "../../entities/User";
 import { AppDataSource } from "../../data-source";
 import { Request, Response } from "express";
 import * as bcrypt from "bcrypt";
+import { Mall } from "../../entities/Mall";
 
-class OfficerService {
-  private readonly officerRepository: Repository<User> =
-    AppDataSource.getRepository(User);
+class MallService {
+  private readonly mallRepository: Repository<Mall> =
+    AppDataSource.getRepository(Mall);
 
-  async getAllOfficers(req: Request, res: Response) {
+  async getAllOMalls(req: Request, res: Response) {
     // const roleId = res.locals.loginSession.user.role;
     // if (roleId != "3") {
     //   return res.status(400).json({ error: "Role required" });
     // }
     try {
-      const officers = await this.officerRepository.find({
+      const malls = await this.mallRepository.find({
         order: {
           id: "DESC",
         },
       });
-      return res.status(200).json(officers);
+      return res.status(200).json(malls);
     } catch (error) {
       console.error("Error:", error);
       return res.status(500).json({ error: error });
@@ -32,40 +33,30 @@ class OfficerService {
       if (roleId != "3") {
         return res.status(400).json({ error: "Role required" });
       }
+
       const data = {
-        fullname: req.body.fullname,
-        username: req.body.username,
-        email: req.body.email,
-        phone: req.body.phone,
+        name: req.body.name,
+        district: req.body.district,
         address: req.body.address,
-        password: req.body.password,
       };
-      if (
-        !data.fullname ||
-        !data.username ||
-        !data.email ||
-        !data.password ||
-        !data.address ||
-        !data.phone
-      ) {
+
+      if (!data.name || !data.district || !data.address) {
         return res.status(400).json({ error: "All fields are required" });
       }
-      const hashedPassword = await bcrypt.hash(data.password, 10);
-      const user = this.officerRepository.create({
-        fullname: data.fullname,
-        username: data.username,
-        email: data.email,
-        phone: data.phone,
+
+      const mall = this.mallRepository.create({
+        name: data.name,
+        district: data.district,
         address: data.address,
-        password: hashedPassword,
-        role: "2",
       });
-      await this.officerRepository.save(user);
+      await this.mallRepository.save(mall); // Wait for user to be saved
+
       const responseMessage = `Data User Berhasil di buat:\n${JSON.stringify(
-        user,
+        mall,
         null,
         2
       )}`;
+
       return res.status(200).send(responseMessage);
     } catch (error) {
       console.error("Error:", error);
@@ -80,7 +71,7 @@ class OfficerService {
       //   return res.status(400).json({ error: "Role required" });
       // }
       const id = req.params.id;
-      const deletedOficcer = await this.officerRepository.delete(id);
+      const deletedOficcer = await this.mallRepository.delete(id);
       return res.status(200).json(deletedOficcer);
     } catch (error) {
       return res.status(500).json("Terjadi kesalahan pada server");
@@ -93,37 +84,38 @@ class OfficerService {
       // if (roleId !== "3") {
       //   return res.status(403).json({ error: "Permission denied" });
       // }
+
       const id = req.params.id;
-      const officerToUpdate = await this.officerRepository.findOne({
+
+      const mallToUpdate = await this.mallRepository.findOne({
         where: {
           id: id,
         },
       });
-      if (!officerToUpdate) {
-        return res.status(404).json({ error: "Officer not found" });
+
+      if (!mallToUpdate) {
+        return res.status(404).json({ error: "Mall not found" });
       }
-      const { fullname, username, email, phone, password } = req.body;
-      const updatedUser = new User();
-      updatedUser.fullname = fullname;
-      updatedUser.username = username;
-      updatedUser.email = email;
-      updatedUser.phone = phone;
-      updatedUser.password = password;
-      if (password) {
-        const hashedPassword = await bcrypt.hash(password, 10);
-        officerToUpdate.password = hashedPassword;
-      }
-      officerToUpdate.fullname = fullname;
-      officerToUpdate.username = username;
-      officerToUpdate.email = email;
-      officerToUpdate.phone = phone;
-      officerToUpdate.updated_at = new Date();
-      const updatedOfficer = await this.officerRepository.save(officerToUpdate);
-      return res.status(200).json(updatedOfficer);
+
+      const { name, district, address } = req.body;
+
+      const updatedMall = new Mall();
+      updatedMall.name = name;
+      updatedMall.district = district;
+      updatedMall.address = address;
+
+      mallToUpdate.name = name;
+      mallToUpdate.district = district;
+      mallToUpdate.address = address;
+      mallToUpdate.updated_at = new Date();
+
+      const update = await this.mallRepository.save(mallToUpdate);
+
+      return res.status(200).json(update);
     } catch (error) {
       console.error("Error:", error);
       return res.status(500).json({ error: "Internal Server Error" });
     }
   }
 }
-export default new OfficerService();
+export default new MallService();

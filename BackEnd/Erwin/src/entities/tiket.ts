@@ -4,7 +4,8 @@ import {
   Column,
   Timestamp,
   OneToOne,
-  JoinColumn, // Import JoinColumn
+  JoinColumn,
+  ManyToOne, // Import JoinColumn
 } from "typeorm";
 import { User } from "./User";
 import { Floor } from "./Floor";
@@ -17,12 +18,10 @@ export class Ticket {
   @Column()
   noKendaraan: string;
 
-  @OneToOne(() => User, { onDelete: "CASCADE" })
-  @JoinColumn()
+  @ManyToOne(() => User, (user) => user.tickets)
   user: User;
 
-  @OneToOne(() => Floor, { onDelete: "CASCADE" })
-  @JoinColumn()
+  @ManyToOne(() => Floor, (floor) => floor.tickets)
   floor: Floor;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })

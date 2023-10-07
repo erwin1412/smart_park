@@ -1,10 +1,5 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  Timestamp,
-  OneToOne,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import { Ticket } from "./tiket";
 
 @Entity({ name: "users" })
 export class User {
@@ -26,6 +21,9 @@ export class User {
   @Column({ unique: true })
   phone: string;
 
+  @Column({ nullable: true })
+  address: string;
+
   @Column()
   role: string;
 
@@ -34,4 +32,7 @@ export class User {
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   updated_at: Date;
+
+  @OneToMany(() => Ticket, (tickets) => tickets.user)
+  tickets: Ticket[];
 }

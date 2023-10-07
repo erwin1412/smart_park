@@ -4,8 +4,11 @@ import {
   Column,
   OneToOne,
   JoinColumn,
+  OneToMany,
+  ManyToOne,
 } from "typeorm";
 import { Mall } from "./Mall";
+import { Ticket } from "./tiket";
 
 @Entity({ name: "floors" })
 export class Floor {
@@ -18,8 +21,7 @@ export class Floor {
   @Column({ default: false })
   isBooked: Boolean;
 
-  @OneToOne(() => Mall)
-  @JoinColumn()
+  @ManyToOne(() => Mall, (mall) => mall.floors)
   mall: Mall;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
@@ -27,4 +29,7 @@ export class Floor {
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   updated_at: Date;
+
+  @OneToMany(() => Ticket, (tickets) => tickets.floor)
+  tickets: Ticket[];
 }
