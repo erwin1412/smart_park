@@ -59,15 +59,15 @@ function App() {
   return (
     <>
       <Routes>
-        <Route element={<IsLogin />}>
+        {/* <Route element={<IsLogin />}> */}
           <Route path="/" element={<Home />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/reservation" element={<ReservationPage />} />
-        </Route>
-        <Route element={<IsNotLogin />}>
+        {/* </Route> */}
+        {/* <Route element={<IsNotLogin />}> */}
           <Route path="/auth/login" element={<LoginPage />} />
           <Route path="/auth/register" element={<RegisterPage />} />
-        </Route>
+        {/* </Route> */}
       </Routes>
     </>
   )

@@ -18,6 +18,8 @@ export default function useGetMallList() {
     try {
       const response = await API.get("/mall")
       setMallList(response.data)
+      console.log("ini mall", response.data)
+      console.log("malsss", mallList)
     } catch (err) {
       console.log(err)
     }
@@ -73,9 +75,7 @@ export default function useGetMallList() {
     }
   }
 
-  useEffect(() => {
-    getData()
-  }, [mallList])
+
 
   async function handleDelete(id: any) {
     try {
@@ -126,7 +126,6 @@ export default function useGetMallList() {
         title: "Update Mall Failed",
         status: "error",
       })
-      
     }
   }
 
@@ -140,6 +139,6 @@ export default function useGetMallList() {
     getData,
     handleDelete,
     updateMall,
-    mallList
+    mallList,
   }
 }

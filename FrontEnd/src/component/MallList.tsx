@@ -11,14 +11,27 @@ import {
 } from "@chakra-ui/react"
 import { useNavigate } from "react-router-dom"
 import useGetMallList from "../hooks/useGetMallList"
+import { useEffect, useState } from "react"
+import { IMall } from "../interface/IMall"
 
 export default function MallList() {
   const navigate = useNavigate()
 
-  const { mallList } = useGetMallList()
+  const { mallList, getData } = useGetMallList()
+  console.log("list", mallList)
+
+  // const [malls, setMalls] = useState<IMall[]>([]);
+  // const malls = Array.isArray(mallList) ? mallList : []
+  const malls = Array.isArray(mallList) && mallList.length > 0 ? mallList : [];
+  console.log("mall", malls)
+
+  
+  useEffect(() => {
+    getData(); // Fetch mall data
+  }, [mallList]);
   return (
     <>
-      {mallList.map((mall) => (
+      {malls?.map((mall: IMall) => (
         <Card w={"sm"} key={mall.id}>
           <CardBody>
             <Image
@@ -27,9 +40,12 @@ export default function MallList() {
               w={"full"}
               h={"15em"}
               objectFit={"cover"}
-            />
+              />
             <Stack mt={6}>
-              <Heading size={"md"}>{mall.name}</Heading>
+              <Heading size={"md"}>
+                {mall.name}
+              </Heading>
+              <Text>{mall.district}</Text>
               <Text>{mall.address}</Text>
             </Stack>
           </CardBody>
