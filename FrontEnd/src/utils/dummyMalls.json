@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Mal Kelapa Gading (MKG)",
+    "image": "https://images.unsplash.com/photo-1559171667-74fe3499b5ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "location": "Jakarta Utara"
+  },
+  {
+    "id": 2,
+    "name": "Mal Artha Gading",
+    "image": "https://images.unsplash.com/photo-1567449303078-57ad995bd17a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80",
+    "location": "Jakarta Utara"
+  },
+  {
+    "id": 3,
+    "name": "Mall of Indonesia (MOI)",
+    "image": "https://images.unsplash.com/photo-1614521084980-811d04f6c6cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1935&q=80",
+    "location": "Jakarta Utara"
+  },
+  {
+    "id": 4,
+    "name": "Bella Terra",
+    "image": "https://images.unsplash.com/photo-1619335680642-964b9c259d5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "location": "Jakarta Utara"
+  }
+]

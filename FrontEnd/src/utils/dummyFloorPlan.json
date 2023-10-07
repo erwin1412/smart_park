@@ -1,0 +1,352 @@
+[
+  {
+    "id": 1,
+    "parkingCode": "A1",
+    "isBooked": false
+  },
+  {
+    "id": 2,
+    "parkingCode": "A2",
+    "isBooked": false
+  },
+  {
+    "id": 3,
+    "parkingCode": "A3",
+    "isBooked": true
+  },
+  {
+    "id": 4,
+    "parkingCode": "A4",
+    "isBooked": true
+  },
+  {
+    "id": 5,
+    "parkingCode": "A5",
+    "isBooked": false
+  },
+  {
+    "id": 6,
+    "parkingCode": "A6",
+    "isBooked": true
+  },
+  {
+    "id": 7,
+    "parkingCode": "B1",
+    "isBooked": false
+  },
+  {
+    "id": 8,
+    "parkingCode": "B2",
+    "isBooked": false
+  },
+  {
+    "id": 9,
+    "parkingCode": "B3",
+    "isBooked": true
+  },
+  {
+    "id": 10,
+    "parkingCode": "B4",
+    "isBooked": false
+  },
+  {
+    "id": 11,
+    "parkingCode": "B5",
+    "isBooked": true
+  },
+  {
+    "id": 12,
+    "parkingCode": "B6",
+    "isBooked": false
+  },
+  {
+    "id": 13,
+    "parkingCode": "B7",
+    "isBooked": true
+  },
+  {
+    "id": 14,
+    "parkingCode": "B8",
+    "isBooked": false
+  },
+  {
+    "id": 15,
+    "parkingCode": "B9",
+    "isBooked": true
+  },
+  {
+    "id": 16,
+    "parkingCode": "B10",
+    "isBooked": true
+  },
+  {
+    "id": 17,
+    "parkingCode": "C1",
+    "isBooked": false
+  },
+  {
+    "id": 18,
+    "parkingCode": "C2",
+    "isBooked": false
+  },
+  {
+    "id": 19,
+    "parkingCode": "C3",
+    "isBooked": true
+  },
+  {
+    "id": 20,
+    "parkingCode": "C4",
+    "isBooked": false
+  },
+  {
+    "id": 21,
+    "parkingCode": "C5",
+    "isBooked": false
+  },
+  {
+    "id": 22,
+    "parkingCode": "C6",
+    "isBooked": true
+  },
+  {
+    "id": 23,
+    "parkingCode": "C7",
+    "isBooked": false
+  },
+  {
+    "id": 24,
+    "parkingCode": "C8",
+    "isBooked": true
+  },
+  {
+    "id": 25,
+    "parkingCode": "C9",
+    "isBooked": true
+  },
+  {
+    "id": 26,
+    "parkingCode": "C10",
+    "isBooked": false
+  },
+  {
+    "id": 27,
+    "parkingCode": "D1",
+    "isBooked": true
+  },
+  {
+    "id": 28,
+    "parkingCode": "D2",
+    "isBooked": false
+  },
+  {
+    "id": 29,
+    "parkingCode": "D3",
+    "isBooked": false
+  },
+  {
+    "id": 30,
+    "parkingCode": "D4",
+    "isBooked": true
+  },
+  {
+    "id": 31,
+    "parkingCode": "D5",
+    "isBooked": false
+  },
+  {
+    "id": 32,
+    "parkingCode": "D6",
+    "isBooked": true
+  },
+  {
+    "id": 33,
+    "parkingCode": "D7",
+    "isBooked": true
+  },
+  {
+    "id": 34,
+    "parkingCode": "D8",
+    "isBooked": false
+  },
+  {
+    "id": 35,
+    "parkingCode": "D9",
+    "isBooked": true
+  },
+  {
+    "id": 36,
+    "parkingCode": "D10",
+    "isBooked": false
+  },
+  {
+    "id": 37,
+    "parkingCode": "E1",
+    "isBooked": false
+  },
+  {
+    "id": 38,
+    "parkingCode": "E2",
+    "isBooked": false
+  },
+  {
+    "id": 39,
+    "parkingCode": "E3",
+    "isBooked": false
+  },
+  {
+    "id": 40,
+    "parkingCode": "E4",
+    "isBooked": true
+  },
+  {
+    "id": 41,
+    "parkingCode": "E5",
+    "isBooked": true
+  },
+  {
+    "id": 42,
+    "parkingCode": "E6",
+    "isBooked": false
+  },
+  {
+    "id": 43,
+    "parkingCode": "E7",
+    "isBooked": true
+  },
+  {
+    "id": 44,
+    "parkingCode": "E8",
+    "isBooked": false
+  },
+  {
+    "id": 45,
+    "parkingCode": "E9",
+    "isBooked": true
+  },
+  {
+    "id": 46,
+    "parkingCode": "E10",
+    "isBooked": true
+  },
+  {
+    "id": 47,
+    "parkingCode": "F1",
+    "isBooked": false
+  },
+  {
+    "id": 48,
+    "parkingCode": "F2",
+    "isBooked": false
+  },
+  {
+    "id": 49,
+    "parkingCode": "F3",
+    "isBooked": true
+  },
+  {
+    "id": 50,
+    "parkingCode": "F4",
+    "isBooked": false
+  },
+  {
+    "id": 51,
+    "parkingCode": "F5",
+    "isBooked": false
+  },
+  {
+    "id": 52,
+    "parkingCode": "F6",
+    "isBooked": false
+  },
+  {
+    "id": 53,
+    "parkingCode": "F7",
+    "isBooked": true
+  },
+  {
+    "id": 54,
+    "parkingCode": "F8",
+    "isBooked": true
+  },
+  {
+    "id": 55,
+    "parkingCode": "F9",
+    "isBooked": false
+  },
+  {
+    "id": 56,
+    "parkingCode": "G1",
+    "isBooked": false
+  },
+  {
+    "id": 57,
+    "parkingCode": "G2",
+    "isBooked": true
+  },
+  {
+    "id": 58,
+    "parkingCode": "G3",
+    "isBooked": true
+  },
+  {
+    "id": 59,
+    "parkingCode": "G4",
+    "isBooked": false
+  },
+  {
+    "id": 60,
+    "parkingCode": "G5",
+    "isBooked": false
+  },
+  {
+    "id": 61,
+    "parkingCode": "G6",
+    "isBooked": true
+  },
+  {
+    "id": 62,
+    "parkingCode": "G7",
+    "isBooked": true
+  },
+  {
+    "id": 63,
+    "parkingCode": "G8",
+    "isBooked": false
+  },
+  {
+    "id": 64,
+    "parkingCode": "G9",
+    "isBooked": false
+  },
+  {
+    "id": 65,
+    "parkingCode": "H1",
+    "isBooked": false
+  },
+  {
+    "id": 66,
+    "parkingCode": "H2",
+    "isBooked": false
+  },
+  {
+    "id": 67,
+    "parkingCode": "H3",
+    "isBooked": true
+  },
+  {
+    "id": 68,
+    "parkingCode": "H4",
+    "isBooked": true
+  },
+  {
+    "id": 69,
+    "parkingCode": "H5",
+    "isBooked": false
+  },
+  {
+    "id": 70,
+    "parkingCode": "H6",
+    "isBooked": true
+  }
+]

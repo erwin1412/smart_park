@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "plateNumber": "B 5678 ACD",
+    "spotCode": "F9",
+    "mallName": "Mal Kelapa Gading",
+    "createdAt": "10/7/2023 18:45",
+    "isBooked": true
+  },
+  {
+    "id": 2,
+    "plateNumber": "B 2345 CDE",
+    "spotCode": "A6",
+    "mallName": "Mal Artha Gading",
+    "createdAt": "10/6/2023 17:30",
+    "isBooked": false
+  },
+  {
+    "id": 3,
+    "plateNumber": "B 3456 DEF",
+    "spotCode": "B10",
+    "mallName": "MOI",
+    "createdAt": "10/5/2023 16:00",
+    "isBooked": false
+  },
+  {
+    "id": 4,
+    "plateNumber": "B 4567 EFG",
+    "spotCode": "H3",
+    "mallName": "Bella Terra",
+    "createdAt": "10/4/2023 15:45",
+    "isBooked": false
+  },
+  {
+    "id": 5,
+    "plateNumber": "B 6789 FGH",
+    "spotCode": "D2",
+    "mallName": "The Park Sawangan",
+    "createdAt": "10/3/2023 18:20",
+    "isBooked": false
+  },
+  {
+    "id": 6,
+    "plateNumber": "KT 7890 HI",
+    "spotCode": "E5",
+    "mallName": "BSB eWalk",
+    "createdAt": "10/2/2023 13:30",
+    "isBooked": false
+  },
+  {
+    "id": 7,
+    "plateNumber": "KT 8901 IJ",
+    "spotCode": "C7",
+    "mallName": "Pentacity Mall",
+    "createdAt": "10/1/2023 14:55",
+    "isBooked": false
+  },
+  {
+    "id": 8,
+    "plateNumber": "B 9012 JK",
+    "spotCode": "G8",
+    "mallName": "Central Park",
+    "createdAt": "09/30/2023 20:05",
+    "isBooked": false
+  }
+]
