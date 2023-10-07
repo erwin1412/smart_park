@@ -97,12 +97,12 @@ export default function ReservationPage() {
         <Flex gap={5} align={'end'}>
           <FormControl isRequired isReadOnly>
             <FormLabel>Chosen Parking Spot</FormLabel>
-            <Input variant={'filled'} readOnly value={selectedSpot} />
+            <Input variant={'flushed'} borderColor={'#ED7D3A'} readOnly value={selectedSpot} />
           </FormControl>
 
           <FormControl isRequired>
             <FormLabel>Current Vehicle's Plate Number</FormLabel>
-            <Input variant={'filled'} placeholder="B 2134 ADC" />
+            <Input variant={'flushed'} borderColor={'#ED7D3A'} placeholder="B 2134 ADC" />
           </FormControl>
 
           <Button
@@ -110,6 +110,7 @@ export default function ReservationPage() {
             bgColor={'#ED7D3A'}
             textColor={'white'}
             _hover={{ bgColor: 'gray.200', textColor: 'black' }}
+            onClick={handleFloor}
           >
             Save My Spot!
           </Button>

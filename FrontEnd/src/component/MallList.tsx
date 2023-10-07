@@ -26,9 +26,7 @@ export default function MallList() {
   console.log("mall", malls)
 
   
-  useEffect(() => {
-    getData(); // Fetch mall data
-  }, [mallList]);
+
   return (
     <>
       {malls?.map((mall: IMall) => (
