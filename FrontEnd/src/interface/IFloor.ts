@@ -1,8 +1,11 @@
+import { IMall } from "./IMall"
+
 export interface IFloor {
-    // id: string
+    id: string
     parkingCode: string
     isBooked: boolean
-    mall: string
+    mallId: IMall
+    created_at: string
     
 
 }

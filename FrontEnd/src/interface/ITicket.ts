@@ -1,4 +1,5 @@
 import { IFloor } from "./IFloor"
+import { IAuth } from "./IUser"
 
 export interface ITicket {
     id: string
@@ -7,8 +8,7 @@ export interface ITicket {
 }
 export interface ITicketPost {
     noKendaraan: string
-    floorId: IFloor
+    floor: string
+    userId: string
   
-  
-    
 }

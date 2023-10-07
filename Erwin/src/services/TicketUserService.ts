@@ -20,19 +20,27 @@ class TicketUserService {
 
     return res.status(200).json(ticket);
   }
+  async findAll(req: Request, res: Response) {
+    const idUser = req.params.id;
+    const ticket = await this.checkinRepository.find({
+      order: { created_at: "DESC" },
+    });
+
+    return res.status(200).json(ticket);
+  }
 
   async create(req: Request, res: Response) {
     try {
       const idFloor = req.params.id;
+      const userId = res.locals.loginSession.user.id;
       const data = {
         noKendaraan: req.body.noKendaraan,
-        userId: req.body.userId,
+        floorId: req.body.floorId
       };
 
       const ticket = this.checkinRepository.create({
         noKendaraan: data.noKendaraan,
-        floor: { id: idFloor },
-        user: { id: data.userId },
+        floor: data.floorId,
       });
 
       await this.checkinRepository.save(ticket);

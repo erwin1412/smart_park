@@ -11,6 +11,8 @@ import RegisterPage from "./pages/register";
 import Home from "./pages/home";
 import HistoryPage from "./pages/history";
 import ReservationPage from "./pages/reservation";
+import ReportPage from "./pages/fileAReport";
+import DispatcherHistoryPage from "./pages/dispatcherHistory";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,6 +55,8 @@ function App() {
             <Route path="/reservation" element={<ReservationPage />} />
             <Route path="/auth/login" element={<LoginPage />} />
             <Route path="/auth/register" element={<RegisterPage />} />
+            <Route path='/dispatcher_history' element={<DispatcherHistoryPage />} />
+        <Route path='/file_a_report' element={<ReportPage />} />
           </Routes>
         ) : (
           <Routes>

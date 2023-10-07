@@ -5,6 +5,9 @@ class TicketUserController {
   find(req: Request, res: Response) {
     TicketUserService.find(req, res);
   }
+  findAll(req: Request, res: Response) {
+    TicketUserService.find(req, res);
+  }
   create(req: Request, res: Response) {
     TicketUserService.create(req, res);
   }

@@ -42,8 +42,10 @@ router.get("/report/book-year", ReportController.ReportBookYear)
 // admin end
 
 //user
+
+router.get("/ticket", TicketUserController.findAll)
 router.get("/ticket/:id", TicketUserController.find)
-router.post("/ticket/:id", TicketUserController.create)
+router.post("/ticket", TicketUserController.create)
 router.get("/floor", FloorUserController.find)
 // user end
 

@@ -14,9 +14,11 @@ import {
 import { Layout } from "../layout/Layout"
 // import dummyFloorPlan from "../utils/dummyFloorPlan.json"
 import floorPlan from "../assets/mkg-floor-plan.svg"
-import { useState } from "react"
+import { FormEvent, useState } from "react"
 import useFloor from "../hooks/useFloor"
 import useTicket from "../hooks/useTicket"
+import { ITicketPost } from "../interface/ITicket"
+import { useNavigate } from "react-router-dom"
 
 export default function ReservationPage() {
   // const randomizePercentage = 0.4
@@ -34,9 +36,12 @@ export default function ReservationPage() {
     setSelectedSpot(spotCode)
   }
 
-  const { getData, changeHandler, handleCheckin, ticketList } = useTicket()
+  const { getData, changeHandler, handleCheckin, ticketList, form } = useTicket()
   const {
     floorList,} = useFloor()
+    const navigate = useNavigate()
+
+    
     
    
   return (
