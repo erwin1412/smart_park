@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import MallService from "../services/admin/MallService";
+import MallService from "../../services/admin/MallService";
 
 class MallController {
   getAllMalls(req: Request, res: Response) {

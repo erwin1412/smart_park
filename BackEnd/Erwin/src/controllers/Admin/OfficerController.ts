@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import OfficerService from "../services/admin/OfficerService";
+import OfficerService from "../../services/admin/OfficerService";
 
 class OfficerController {
   getAllOfficers(req: Request, res: Response) {

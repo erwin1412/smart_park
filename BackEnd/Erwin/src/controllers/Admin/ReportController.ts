@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import ReportService from "../services/admin/ReportService";
+import ReportService from "../../services/admin/ReportService";
 
 class ReportController {
   ReportOfficers(req: Request, res: Response) {
