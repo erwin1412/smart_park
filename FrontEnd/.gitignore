@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+<<<<<<< HEAD
+=======
+
+**/.DS_Store
+>>>>>>> aa38038db9c21001689614ceefaf2c74d3d33d42

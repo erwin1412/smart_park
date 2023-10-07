@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import smartParkLogo from "../assets/icons/full-logo.svg"
-import { DispatcherNavigation } from "../components/dispatcherNavigation";
+import { DispatcherNavigation } from "../components/DispatcherNavigation";
 
 interface LayoutProps {
   children: ReactNode

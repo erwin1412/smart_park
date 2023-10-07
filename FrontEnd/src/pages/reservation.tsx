@@ -1,8 +1,9 @@
 import { Box, Button, Flex, FormControl, FormLabel, Grid, Heading, Image, Input, Stack, Text } from "@chakra-ui/react";
 import { Layout } from "../layout/Layout";
-import dummyFloorPlan from "../utils/dummyFloorPlan.json"
+// import dummyFloorPlan from "../utils/dummyFloorPlan.json"
 import floorPlan from "../assets/mkg-floor-plan.svg"
 import { useState } from "react";
+import useFloor from "../hooks/useFloor";
 
 export default function ReservationPage() {
   // const randomizePercentage = 0.4
@@ -19,6 +20,8 @@ export default function ReservationPage() {
     setSelectedSpot(spotCode)
   }
 
+  const {getData, changeHandler, handleFloor, updateFloor, deleteFloor, floorList} = useFloor()
+
   return (
     <Layout>
       <Stack spacing={10}
@@ -27,7 +30,7 @@ export default function ReservationPage() {
       >
         <Flex justify={'space-between'}>
           <Heading size={'md'}>MKG's Parking Lot</Heading>
-          <Text>{dummyFloorPlan.length} Parking Spots | {dummyFloorPlan.filter(parkingSpot => !parkingSpot.isBooked).length} Available</Text>
+          <Text>{floorList.length} Parking Spots | {floorList.filter(parkingSpot => !parkingSpot.isBooked).length} Available</Text>
         </Flex>
 
         <Flex mx={'auto'} boxSize={'2xs'}>
@@ -69,7 +72,7 @@ export default function ReservationPage() {
           </Flex>
 
           <Grid templateColumns={'repeat(10, 8fr)'} gap={5}>
-            {dummyFloorPlan.map((parkingSpot) => (
+            {floorList.map((parkingSpot) => (
               <Button
                 key={parkingSpot.id}
                 isDisabled={parkingSpot.isBooked === true}
@@ -107,6 +110,7 @@ export default function ReservationPage() {
             bgColor={'#ED7D3A'}
             textColor={'white'}
             _hover={{ bgColor: 'gray.200', textColor: 'black' }}
+            onClick={handleFloor}
           >
             Save My Spot!
           </Button>
