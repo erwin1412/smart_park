@@ -14,9 +14,10 @@ export function useRegister() {
     email: "",
     password: "",
     phone: "",
-    role: "1",
   })
 
+  console.log("form :" ,form);
+  
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setForm({
       ...form,
@@ -24,11 +25,15 @@ export function useRegister() {
     })
   }
 
+  
+
+
   const handleRegister = async (event: FormEvent) => {
     event.preventDefault()
     try {
       const response = await API.post("/auth/register", form)
-      console.log(response, "register")
+      console.log("register data : " , response.data)
+      console.log("form", form)
       toast({
         title: "Register Berhasil",
         status: "success",

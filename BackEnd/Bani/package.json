@@ -4,7 +4,9 @@
    "description": "Awesome project developed with TypeORM.",
    "type": "commonjs",
    "devDependencies": {
+      "@types/bcrypt": "^5.0.0",
       "@types/node": "^16.11.10",
+      "bcrypt": "^5.1.1",
       "ts-node": "10.7.0",
       "typescript": "4.5.2"
    },

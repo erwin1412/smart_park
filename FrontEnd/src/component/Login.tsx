@@ -9,14 +9,14 @@ export default function LoginForm() {
         <FormLabel>
           Username
         </FormLabel>
-        <Input type="text" variant={'filled'} onChange={changeHandler}/>
+        <Input type="text" variant={'filled'} name="username" onChange={changeHandler}/>
       </FormControl>
 
       <FormControl isRequired>
         <FormLabel>
           Password
         </FormLabel>
-        <Input type="password" variant={'filled'} onChange={changeHandler}/>
+        <Input type="password" variant={'filled'} name="password" onChange={changeHandler}/>
       </FormControl>
 
       <Button w={'full'} onClick={handleLogin}>Login</Button>

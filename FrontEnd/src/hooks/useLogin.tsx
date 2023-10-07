@@ -17,6 +17,7 @@ export function useLogin() {
         username: "",
         password: ""
     })
+    console.log("form", form)
 
     const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         setForm({

@@ -1,5 +1,5 @@
 import { useToast } from "@chakra-ui/react"
-import { IMall } from "../interface/IMall"
+import { IMall, IMallPost } from "../interface/IMall"
 import { API } from "../lib/api"
 import { ChangeEvent, FormEvent, useEffect, useState } from "react"
 
@@ -8,7 +8,7 @@ export default function useGetMallList() {
   const [previewImage, setPreviewImage] = useState<string>("")
   const toast = useToast()
 
-  const [form, setForm] = useState<IMall>({
+  const [form, setForm] = useState<IMallPost>({
     name: "",
     district: "",
     address: "",
@@ -140,5 +140,6 @@ export default function useGetMallList() {
     getData,
     handleDelete,
     updateMall,
+    mallList
   }
 }

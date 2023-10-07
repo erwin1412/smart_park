@@ -9,6 +9,8 @@ import { AUTH_CHECK } from "./store/rootReducer"
 import LoginPage from "./pages/login"
 import RegisterPage from "./pages/register"
 import Home from "./pages/home"
+import HistoryPage from "./pages/history"
+import ReservationPage from "./pages/reservation"
 
 function App() {
   const [isloading, setIsLoading] = useState<boolean>(true)
@@ -26,7 +28,7 @@ function App() {
     } catch (err) {
       console.log(err, "auth error")
       setIsLoading(false)
-      navigate("/login")
+      navigate("/auth/login")
     }
   }
 
@@ -40,7 +42,7 @@ function App() {
 
   const IsLogin = () => {
     if (!auth.data.username) {
-      return <Navigate to={"/login"} />
+      return <Navigate to={"/auth/login"} />
     } else {
       return <Outlet />
     }
@@ -58,7 +60,9 @@ function App() {
     <>
       <Routes>
         <Route element={<IsLogin />}>
-          {/* <Route path="/" element={<Home/>} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/reservation" element={<ReservationPage />} />
         </Route>
         <Route element={<IsNotLogin />}>
           <Route path="/auth/login" element={<LoginPage />} />

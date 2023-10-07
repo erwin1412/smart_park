@@ -74,5 +74,5 @@ export default function useFloor() {
     getData()
   }, [])
 
-  return { getData, changeHandler, handleFloor, updateFloor, deleteFloor }
+  return { getData, changeHandler, handleFloor, updateFloor, deleteFloor, floorList }
 }
