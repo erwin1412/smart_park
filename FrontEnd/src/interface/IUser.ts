@@ -4,10 +4,11 @@ export interface IRegister {
   email: string
   password: string
   phone: string
+  role: string
 }
 
 export interface ILogin {
-  username: string,
+  username: string
   password: string
 }
 
@@ -19,3 +20,15 @@ export interface IAuth {
   phone: string
   role: string
 }
+
+export interface IOfficer {
+  fullname: string
+  username: string
+  email: string
+  password: string
+  phone: string
+  address: string
+  role: string
+}
+
+

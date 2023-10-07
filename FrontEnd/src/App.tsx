@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react'
+import { Routes, Route } from "react-router-dom"
+import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import './App.css'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
-import { API, setAuthToken } from './lib/api'
-import { RootState } from './store/slice/types/rootState'
-import { AUTH_CHECK } from './store/rootReducer'
+import "./App.css"
+import { Navigate, Outlet, useNavigate } from "react-router-dom"
+import { API, setAuthToken } from "./lib/api"
+import { RootState } from "./store/slice/types/rootState"
+import { AUTH_CHECK } from "./store/rootReducer"
+import LoginPage from "./pages/login"
+import RegisterPage from "./pages/register"
+import Home from "./pages/home"
 
 function App() {
   const [isloading, setIsLoading] = useState<boolean>(true)
@@ -50,11 +54,17 @@ function App() {
     }
   }
 
-
-
   return (
     <>
-     
+      <Routes>
+        <Route element={<IsLogin />}>
+          {/* <Route path="/" element={<Home/>} /> */}
+        </Route>
+        <Route element={<IsNotLogin />}>
+          <Route path="/auth/login" element={<LoginPage />} />
+          <Route path="/auth/register" element={<RegisterPage />} />
+        </Route>
+      </Routes>
     </>
   )
 }

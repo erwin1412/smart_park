@@ -4,7 +4,7 @@ import { IRegister } from "../interface/IUser"
 import { API } from "../lib/api"
 import { useNavigate } from "react-router-dom"
 
-export function useRegister () {
+export function useRegister() {
   const navigate = useNavigate()
   const toast = useToast()
 
@@ -14,6 +14,7 @@ export function useRegister () {
     email: "",
     password: "",
     phone: "",
+    role: "1",
   })
 
   const changeHandler = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +28,7 @@ export function useRegister () {
     event.preventDefault()
     try {
       const response = await API.post("/auth/register", form)
+      console.log(response, "register")
       toast({
         title: "Register Berhasil",
         status: "success",

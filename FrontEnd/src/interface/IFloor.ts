@@ -5,3 +5,8 @@ export interface IFloor {
     mall: string
     createdAt: Date
 }
+export interface IFloorPost {
+    parkingCode: string
+    mall: string
+    isBooked: boolean
+}

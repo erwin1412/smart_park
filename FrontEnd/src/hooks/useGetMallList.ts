@@ -42,7 +42,7 @@ export default function useGetMallList() {
     }
   }
 
-  async function handleSubmit(event: FormEvent) {
+  async function handleMall(event: FormEvent) {
     event.preventDefault()
 
     const formData = new FormData()
@@ -74,37 +74,71 @@ export default function useGetMallList() {
   }
 
   useEffect(() => {
-      getData()
+    getData()
   }, [mallList])
 
-  async function handleDelete (id: any) {
-    try{
-        await API.delete(`/mall/${id}`)
-        getData()
+  async function handleDelete(id: any) {
+    try {
+      await API.delete(`/mall/${id}`)
+      getData()
 
-        toast({
-            title: "Mall Deleted.",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          })
-
-    } catch(err) {
-        console.log(err)
-        toast({
-            title: "Failed to Delete Mall",
-            status: "error",
-            duration: 9000,
-            isClosable: true,
-          })
+      toast({
+        title: "Mall Deleted.",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      })
+    } catch (err) {
+      console.log(err)
+      toast({
+        title: "Failed to Delete Mall",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      })
     }
   }
 
+  async function updateMall(id: any) {
+    const formData = new FormData()
+    formData.append("name", form.name)
+    formData.append("district", form.district)
+    formData.append("address", form.address)
+    formData.append("image", form.image)
+
+    try {
+      const response = await API.patch(`/mall/${id}`, formData) // Assuming you have a PUT endpoint for updating a mall
+      setForm({
+        name: "",
+        district: "",
+        address: "",
+        image: "",
+      })
+      setPreviewImage("")
+      toast({
+        title: "Update Mall Success",
+        status: "success",
+      })
+      getData()
+    } catch (err) {
+      console.log(err)
+      toast({
+        title: "Update Mall Failed",
+        status: "error",
+      })
+      
+    }
+  }
+
+  useEffect(() => {
+    getData()
+  }, [])
 
   return {
     changeHandler,
-    handleSubmit,
+    handleMall,
     getData,
-    handleDelete
+    handleDelete,
+    updateMall,
   }
 }
