@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import FloorService from "../services/admin/FloorService";
+import FloorService from "../../services/admin/FloorService";
 
 class FloorController {
   getAllFloors(req: Request, res: Response) {

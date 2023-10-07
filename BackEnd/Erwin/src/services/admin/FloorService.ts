@@ -3,7 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { Request, Response } from "express";
 import { Floor } from "../../entities/Floor";
 
-class FloorService {
+class FloorAdminService {
   private readonly floorRepository: Repository<Floor> =
     AppDataSource.getRepository(Floor);
 
@@ -112,4 +112,4 @@ class FloorService {
     }
   }
 }
-export default new FloorService();
+export default new FloorAdminService();

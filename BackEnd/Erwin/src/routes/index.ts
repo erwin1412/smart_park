@@ -1,11 +1,12 @@
 import * as express from "express";
 import AuthController from "../controllers/AuthController";
-import OfficerController from "../controllers/OfficerController";
 import authenticate from "../middlewares/auth";
-import CheckinController from "../controllers/CheckinController";
-import MallController from "../controllers/MallController";
-import FloorController from "../controllers/FloorController";
-import ReportController from "../controllers/ReportController";
+import OfficerController from "../controllers/Admin/OfficerController";
+import MallController from "../controllers/Admin/MallController";
+import FloorController from "../controllers/Admin/FloorController";
+import ReportController from "../controllers/Admin/ReportController";
+import TicketUserController from "../controllers/TicketUserController";
+import FloorUserController from "../controllers/FloorUserController";
 
 const router = express.Router();
 // router
@@ -40,7 +41,15 @@ router.get("/report/book-month", ReportController.ReportBookMonth);
 router.get("/report/book-year", ReportController.ReportBookYear);
 // admin end
 
-router.post("/checkin/create", authenticate, CheckinController.create);
+//user
+router.get("/ticket/:id", TicketUserController.find);
+router.post("/ticket/:id", TicketUserController.create);
+router.get("/floor", FloorUserController.find);
+// user end
+
+//petugas
+router.patch("/floor/update/:id", FloorUserController.update);
+//emd petugas
 
 router.post("/auth/register", AuthController.register);
 router.post("/auth/login", AuthController.login);
