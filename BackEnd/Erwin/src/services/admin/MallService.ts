@@ -2,7 +2,6 @@ import { Repository } from "typeorm";
 import { User } from "../../entities/User";
 import { AppDataSource } from "../../data-source";
 import { Request, Response } from "express";
-import * as bcrypt from "bcrypt";
 import { Mall } from "../../entities/Mall";
 
 class MallService {
@@ -10,10 +9,10 @@ class MallService {
     AppDataSource.getRepository(Mall);
 
   async getAllOMalls(req: Request, res: Response) {
-    // const roleId = res.locals.loginSession.user.role;
-    // if (roleId != "3") {
-    //   return res.status(400).json({ error: "Role required" });
-    // }
+    const roleId = res.locals.loginSession.user.role;
+    if (roleId == "3") {
+      return res.status(400).json({ error: "Role required" });
+    }
     try {
       const malls = await this.mallRepository.find({
         order: {
@@ -30,7 +29,7 @@ class MallService {
   async create(req: Request, res: Response) {
     const roleId = res.locals.loginSession.user.role;
     try {
-      if (roleId != "3") {
+      if (roleId == "3") {
         return res.status(400).json({ error: "Role required" });
       }
 
@@ -66,10 +65,10 @@ class MallService {
 
   async delete(req: Request, res: Response) {
     try {
-      // const roleId = res.locals.loginSession.user.role;
-      // if (roleId != "3") {
-      //   return res.status(400).json({ error: "Role required" });
-      // }
+      const roleId = res.locals.loginSession.user.role;
+      if (roleId == "3") {
+        return res.status(400).json({ error: "Role required" });
+      }
       const id = req.params.id;
       const deletedOficcer = await this.mallRepository.delete(id);
       return res.status(200).json(deletedOficcer);
@@ -80,10 +79,10 @@ class MallService {
 
   async update(req: Request, res: Response) {
     try {
-      // const roleId = res.locals.loginSession.user.role;
-      // if (roleId !== "3") {
-      //   return res.status(403).json({ error: "Permission denied" });
-      // }
+      const roleId = res.locals.loginSession.user.role;
+      if (roleId == "3") {
+        return res.status(403).json({ error: "Permission denied" });
+      }
 
       const id = req.params.id;
 

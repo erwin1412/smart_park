@@ -12,7 +12,7 @@ class TicketUserService {
     AppDataSource.getRepository(Floor);
 
   async find(req: Request, res: Response) {
-    const idUser = req.params.id;
+    const idUser = res.locals.loginSession.user.id;
     const ticket = await this.checkinRepository.find({
       where: { user: { id: idUser } },
       order: { created_at: "DESC" },
@@ -24,15 +24,15 @@ class TicketUserService {
   async create(req: Request, res: Response) {
     try {
       const idFloor = req.params.id;
+      const userId = res.locals.loginSession.user.id;
       const data = {
         noKendaraan: req.body.noKendaraan,
-        userId: req.body.userId,
       };
 
       const ticket = this.checkinRepository.create({
         noKendaraan: data.noKendaraan,
-        floor: { id: idFloor },
-        user: { id: data.userId },
+        floor: idFloor,
+        user: userId,
       });
 
       await this.checkinRepository.save(ticket);
@@ -45,8 +45,8 @@ class TicketUserService {
         floor.isBooked = true;
         await this.floorRepository.save(floor);
       }
-
-      return res.status(200).send(ticket);
+      console.log("masuk sini gak 5");
+      return res.status(200).send({ ticket, floor });
     } catch (error) {
       return res.status(500).json({ error });
     }

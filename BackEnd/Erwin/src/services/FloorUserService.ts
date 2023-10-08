@@ -8,9 +8,34 @@ class FloorUserService {
     AppDataSource.getRepository(Floor);
 
   async find(req: Request, res: Response) {
-    const floor = await this.floorRepository.find();
+    try {
+      // const id = req.params.id;
 
-    return res.status(200).json(floor);
+      const floor = await this.floorRepository.find({
+        // where: {
+        //   mall: {
+        //     // id: id,
+        //   },
+        // },
+        select: [
+          "id",
+          "parkingCode",
+          "isBooked",
+          "created_at",
+          "updated_at",
+          "mall",
+        ],
+      });
+
+      if (!floor) {
+        return res.status(404).json({ message: "Floor not found" });
+      }
+
+      return res.status(200).json(floor);
+    } catch (error) {
+      console.error(error); // Log the error for debugging purposes
+      return res.status(500).json({ message: "Internal server error" });
+    }
   }
 
   async update(req: Request, res: Response) {

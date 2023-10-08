@@ -1,10 +1,4 @@
-import {
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToOne,
-  OneToMany,
-} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
 import { Floor } from "./Floor";
 
 @Entity({ name: "malls" })
@@ -20,6 +14,9 @@ export class Mall {
 
   @Column()
   address: string;
+
+  @Column()
+  image: string;
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   created_at: Date;

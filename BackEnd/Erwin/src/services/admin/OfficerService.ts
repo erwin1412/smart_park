@@ -9,10 +9,10 @@ class OfficerService {
     AppDataSource.getRepository(User);
 
   async getAllOfficers(req: Request, res: Response) {
-    // const roleId = res.locals.loginSession.user.role;
-    // if (roleId != "3") {
-    //   return res.status(400).json({ error: "Role required" });
-    // }
+    const roleId = res.locals.loginSession.user.role;
+    if (roleId != "3") {
+      return res.status(400).json({ error: "Role required" });
+    }
     try {
       const officers = await this.officerRepository.find({
         order: {

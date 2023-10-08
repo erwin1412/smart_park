@@ -12,10 +12,10 @@ class ReportService {
     AppDataSource.getRepository(Ticket);
 
   async getReportAllOfficers(req: Request, res: Response) {
-    // const roleId = res.locals.loginSession.user.role;
-    // if (roleId != "3") {
-    //   return res.status(400).json({ error: "Role required" });
-    // }
+    const roleId = res.locals.loginSession.user.role;
+    if (roleId != "3") {
+      return res.status(400).json({ error: "Role required" });
+    }
     try {
       const officers = await this.officerRepository.find({
         order: {
@@ -31,6 +31,10 @@ class ReportService {
   }
 
   async getReportBookDays(req: Request, res: Response) {
+    const roleId = res.locals.loginSession.user.role;
+    if (roleId != "3") {
+      return res.status(400).json({ error: "Role required" });
+    }
     try {
       const officers = await this.ticketRepository.find({
         select: ["id", "noKendaraan", "user", "floor", "created_at"],
@@ -47,6 +51,10 @@ class ReportService {
   }
 
   async getReportBookMonth(req: Request, res: Response) {
+    const roleId = res.locals.loginSession.user.role;
+    if (roleId != "3") {
+      return res.status(400).json({ error: "Role required" });
+    }
     try {
       const officers = await this.ticketRepository.find({
         select: ["id", "noKendaraan", "user", "floor", "created_at"],

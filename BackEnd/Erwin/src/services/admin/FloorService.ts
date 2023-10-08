@@ -15,7 +15,7 @@ class FloorAdminService {
     try {
       const floors = await this.floorRepository.find({
         order: {
-          id: "DESC",
+          parkingCode: "ASC",
         },
       });
       return res.status(200).json(floors);
@@ -27,15 +27,17 @@ class FloorAdminService {
 
   async create(req: Request, res: Response) {
     const roleId = res.locals.loginSession.user.role;
-    const mallId = req.params.id;
+    // const mallId = req.params.id;
 
     try {
-      if (roleId != "3") {
+      if (roleId == "3") {
         return res.status(400).json({ error: "Role required" });
       }
 
       const data = {
         parkingCode: req.body.parkingCode,
+
+        mallId: req.body.mallId,
       };
 
       if (!data.parkingCode) {
@@ -45,7 +47,7 @@ class FloorAdminService {
       const floor = this.floorRepository.create({
         parkingCode: data.parkingCode,
         isBooked: false,
-        mall: mallId,
+        mall: data.mallId,
       });
       await this.floorRepository.save(floor); // Wait for user to be saved
 
