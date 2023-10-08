@@ -3,6 +3,7 @@ import { Layout } from "../layout/Layout";
 import dummyFloorPlan from "../utils/dummyFloorPlan.json"
 import floorPlan from "../assets/mkg-floor-plan.svg"
 import { useState } from "react";
+import { IDummy } from "../interface/IDummy";
 // import { useDummyForm } from "../hooks/useDummyForm";
 // import { useNavigate } from "react-router-dom";
 
@@ -26,12 +27,13 @@ export default function ReservationPage() {
     const plateNumberInput = document.getElementById('plateNumberInput') as HTMLInputElement | null
     const plateNumber = plateNumberInput ? plateNumberInput.value : ''
 
-    const formData = {
+    const formData: IDummy = {
       selectedSpot: selectedSpot,
       plateNumber: plateNumber,
       isBooked: false,
       mallName: "Mal Kelapa Gading",
-      mallLocation: "Jakarta Utara"
+      mallLocation: "Jakarta Utara",
+      createdAt: new Date().toISOString(),
     }
 
     const parkingData = JSON.parse(localStorage.getItem('Parking Spot Data') || '[]');
