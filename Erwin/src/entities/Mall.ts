@@ -16,10 +16,10 @@ export class Mall {
   name: string;
 
   @Column()
-  district: string;
+  location: string;
 
   @Column()
-  address: string;
+  image: string
 
   @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
   created_at: Date;

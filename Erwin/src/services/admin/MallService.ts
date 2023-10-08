@@ -36,18 +36,18 @@ class MallService {
 
       const data = {
         name: req.body.name,
-        district: req.body.district,
-        address: req.body.address,
+        location: req.body.location,
+        image: req.body.image
       };
 
-      if (!data.name || !data.district || !data.address) {
+      if (!data.name || !data.location) {
         return res.status(400).json({ error: "All fields are required" });
       }
 
       const mall = this.mallRepository.create({
         name: data.name,
-        district: data.district,
-        address: data.address,
+        location: data.location,
+        image: data.image
       });
       await this.mallRepository.save(mall); // Wait for user to be saved
 
@@ -97,16 +97,16 @@ class MallService {
         return res.status(404).json({ error: "Mall not found" });
       }
 
-      const { name, district, address } = req.body;
+      const { name, location, image } = req.body;
 
       const updatedMall = new Mall();
       updatedMall.name = name;
-      updatedMall.district = district;
-      updatedMall.address = address;
+      updatedMall.location = location;
+      updatedMall.image = image;
 
       mallToUpdate.name = name;
-      mallToUpdate.district = district;
-      mallToUpdate.address = address;
+      mallToUpdate.location = location;
+      mallToUpdate.image = image;
       mallToUpdate.updated_at = new Date();
 
       const update = await this.mallRepository.save(mallToUpdate);

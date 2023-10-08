@@ -2,12 +2,22 @@ import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import smartParkLogo from "../assets/icons/full-logo.svg"
 import { DispatcherNavigation } from "../components/DispatcherNavigation";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { LOGOUT } from "../store/rootReducer";
 
 interface LayoutProps {
   children: ReactNode
 }
 
 export function DispatcherLayout({ children }: LayoutProps) {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const btnLogout = () => {
+    localStorage.removeItem("token")
+    dispatch(LOGOUT())
+    navigate("/auth/login")
+  }
   return (
     <Flex justify={'center'} minH={'100vh'}>
       <Box
@@ -42,6 +52,7 @@ export function DispatcherLayout({ children }: LayoutProps) {
               w={'full'}
               justifyContent={'left'}
               variant={'ghost'}
+              onClick={btnLogout}
             >
               Logout
             </Button>
